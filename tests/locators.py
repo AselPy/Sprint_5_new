@@ -1,112 +1,57 @@
-
 from selenium.webdriver.common.by import By
 
 
 class Locators:
-    # Главная страница: вход и регистрация
-    BTN_ENTER_REG = (
-        By.XPATH,
-        "//*[self::button or self::a or @role='button']"
-        "[contains(normalize-space(.), 'Вход и регистрация') "
-        "or contains(normalize-space(.), 'Войти') "
-        "or contains(normalize-space(.), 'Личный кабинет')]"
+    # Кнопки на главной странице
+    LOGIN_REGISTER_BUTTON = (
+        By.XPATH, "//*[contains(text(), 'Вход и регистрация')]"
     )
 
-    # Переключение на регистрацию
-    BTN_NO_ACCOUNT = (
-        By.XPATH,
-        "//*[self::button or self::a or @role='button']"
-        "[contains(normalize-space(.), 'Нет аккаунта') "
-        "or contains(normalize-space(.), 'Зарегистрироваться') "
-        "or contains(normalize-space(.), 'Регистрация')]"
+    NO_ACCOUNT_BUTTON = (
+        By.XPATH, "//*[contains(text(), 'Нет аккаунта')]"
     )
 
-    # Поле электронной почты
+    LOGOUT_BUTTON = (
+        By.XPATH, "//*[contains(text(), 'Выйти')]"
+    )
+
+    PLACE_AD_BUTTON = (
+        By.XPATH, "//*[contains(text(), 'Разместить объявление')]"
+    )
+
+    # Поля регистрации и входа
     INPUT_EMAIL = (
-        By.XPATH,
-        "//input["
-        "@type='email' "
-        "or @name='email' "
-        "or @autocomplete='email' "
-        "or contains(translate(@placeholder, "
-        "'ABCDEFGHIJKLMNOPQRSTUVWXYZ', "
-        "'abcdefghijklmnopqrstuvwxyz'), 'email') "
-        "or contains(translate(@placeholder, "
-        "'ABCDEFGHIJKLMNOPQRSTUVWXYZ', "
-        "'abcdefghijklmnopqrstuvwxyz'), 'почт') "
-        "or contains(translate(@name, "
-        "'ABCDEFGHIJKLMNOPQRSTUVWXYZ', "
-        "'abcdefghijklmnopqrstuvwxyz'), 'email')"
-        "]"
+        By.XPATH, "//input[@type='email']"
     )
 
-    # Поля пароля
     INPUT_PASSWORD = (
-        By.XPATH,
-        "(//input[@type='password'])[1]"
+        By.XPATH, "(//input[@type='password'])[1]"
     )
 
     INPUT_PASSWORD_CONFIRM = (
-        By.XPATH,
-        "(//input[@type='password'])[2]"
+        By.XPATH, "(//input[@type='password'])[2]"
     )
 
-    # Создание аккаунта
+    # Кнопки форм
     BTN_CREATE_ACCOUNT = (
-        By.XPATH,
-        "//button[contains(normalize-space(.), 'Создать аккаунт') "
-        "or contains(normalize-space(.), 'Зарегистрироваться') "
-        "or contains(normalize-space(.), 'Регистрация')]"
+        By.XPATH, "//button[contains(text(), 'Создать аккаунт')]"
     )
 
     BTN_LOGIN = (
-        By.XPATH,
-        "//button[contains(normalize-space(.), 'Войти')]"
+        By.XPATH, "//button[contains(text(), 'Войти')]"
     )
 
-    BTN_LOGOUT = (
-        By.XPATH,
-        "//*[self::button or self::a or @role='button']"
-        "[contains(normalize-space(.), 'Выйти')]"
-    )
-
-    USER_ELEMENT = BTN_LOGOUT
-
-    # Сообщения об ошибках
+    # Сообщение об ошибке
     ERROR_MESSAGE = (
-        By.XPATH,
-        "//*[contains(translate(normalize-space(.), "
-        "'ABCDEFGHIJKLMNOPQRSTUVWXYZАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ', "
-        "'abcdefghijklmnopqrstuvwxyzабвгдеёжзийклмнопрстуфхцчшщъыь'), "
-        "'ошибка') "
-        "or contains(translate(normalize-space(.), "
-        "'ABCDEFGHIJKLMNOPQRSTUVWXYZ', "
-        "'abcdefghijklmnopqrstuvwxyz'), 'invalid') "
-        "or contains(normalize-space(.), 'уже зарегистрирован') "
-        "or contains(normalize-space(.), 'уже существует')]"
+        By.XPATH, "//*[contains(text(), 'Ошибка')]"
     )
 
-    # Объявления
-    BTN_ADD_ADVERTISEMENT = (
-        By.XPATH,
-        "//*[self::button or self::a or @role='button']"
-        "[contains(normalize-space(.), 'Разместить объявление')]"
+    # Элемент с именем пользователя
+    USER_ELEMENT = (
+        By.XPATH, "//*[contains(text(), 'User')]"
     )
 
-    MODAL_TITLE_UNAUTHORIZED = (
-        By.XPATH,
-        "//*[contains(normalize-space(.), "
-        "'Чтобы разместить объявление, авторизуйтесь')]"
-    )
-
-    INPUT_TITLE = (By.NAME, "name")
-    INPUT_DESCRIPTION = (By.NAME, "description")
-    INPUT_PRICE = (By.NAME, "price")
-
-    BTN_PUBLISH = (
-        By.XPATH,
-        "//form[@name='new-card']"
-        "//button[normalize-space(.)='Опубликовать']"
-    )
-
-    ADS_LIST = (By.CLASS_NAME, "places__list")
+    # Совместимые имена для тестов
+    BTN_ENTER_REG = LOGIN_REGISTER_BUTTON
+    BTN_NO_ACCOUNT = NO_ACCOUNT_BUTTON
+    BTN_LOGOUT = LOGOUT_BUTTON

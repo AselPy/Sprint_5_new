@@ -1,13 +1,14 @@
 import pytest
 from selenium import webdriver
 
+from urls import BASE_URL
+
+
 @pytest.fixture
 def driver():
-    # Инициализация драйвера перед тестом
-    browser = webdriver.Chrome()
-    browser.get("https://qa-desk.education-services.ru/")
-    
-    yield browser
-    
-    # Закрытие браузера после теста (соответствует требованиям autonomity и driver.quit())
-    browser.quit()
+    driver = webdriver.Chrome()
+    driver.get(BASE_URL)
+
+    yield driver
+
+    driver.quit()
